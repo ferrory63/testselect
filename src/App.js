@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Select from './Select'
 
 function App() {
+  
+  const array = [
+    {id:1,text : '1', imageUrl : "/icons/photo.svg", added:false},
+    {id:2,text : '5', imageUrl : "asdsda", added:false},
+    {id:3,text : '3', imageUrl : "asdsda", added:false},
+   ];
+  
+  const [value, setValue] = React.useState([])
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{width:200}}>
+    
+    <Select 
+      content={array} 
+      prompt={'Select smth'}
+      onSelectClick={val => setValue((prev) => [...prev,val])}>
+    </Select>
     </div>
   );
 }
