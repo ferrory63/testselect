@@ -2,7 +2,7 @@ import React from 'react';
 import Option from '../Option';
 import './select.css'
 
-function Select ({content, prompt, onSelectClick,}) {
+function Select ({content, prompt, onSelectClick, value, setValue}) {
    const [isopen, setIsOpen] = React.useState(false);
    const [searchValue, setSearchValue] = React.useState("");
 
@@ -35,6 +35,8 @@ function Select ({content, prompt, onSelectClick,}) {
             <div className={`options ${isopen ? "open" : null }`}>
                 {content.filter((obj) => obj.text.toLowerCase().includes(searchValue)).map((obj) => (
                     <Option
+                        value = {value}
+                        setValue = {setValue}
                         content={obj}
                         key = {obj.id}
                         onSelectClick= {onSelectClick}

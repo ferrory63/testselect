@@ -1,7 +1,7 @@
 import React from "react";
 import './option.css'
 
-function Option ({content, onSelectClick})  {
+function Option ({content, onSelectClick, value, setValue})  {
     const [isAdded, setIsAdded] = React.useState(false);
 
     
@@ -10,8 +10,15 @@ function Option ({content, onSelectClick})  {
         <div 
                         
                         onClick={() => {
-                            onSelectClick(content); 
-                            setIsAdded(!isAdded)
+                            if (value.find((item) => Number(content.id) === Number(item.id))) {
+                                setValue(prev => prev.filter(item => Number(content.id) !==Number(item.id)))
+                                setIsAdded(false)
+                            } else {
+                                onSelectClick(content); 
+                                setIsAdded(!isAdded)
+                            }
+                            
+                            
                             
                             
                         }} 
