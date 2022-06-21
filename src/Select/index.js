@@ -2,12 +2,14 @@ import React from 'react';
 import Option from '../Option';
 import './select.css'
 
-function Select ({content, prompt, value, setValue}) {
+function Select ({content, prompt, value, setValue, color, width}) {
    const [isopen, setIsOpen] = React.useState(false);
    const [searchValue, setSearchValue] = React.useState("");
+   const ref = React.useRef(null);
 
-    const ref = React.useRef(null);
 
+
+    
 
    React.useEffect(()=> {
     let close = (event) => {
@@ -37,14 +39,15 @@ function Select ({content, prompt, value, setValue}) {
    }
 
     return (
-        <div ref={ref} className="select" >
-            <div  className="control" onClick={() => setIsOpen(true)}>
-                <div  className="search">
-                    {isopen ? <input className='search-block' onChange={onChangeSearchInput} value={searchValue} placeholder='Search...' type="text" /> : prompt}
+        <div style={{width:width}}>
+            <div ref={ref} className={`select ${color}`} >
+            <div  className={`control ${color}`} onClick={() => setIsOpen(true)}>
+                <div  className={`search ${color}`}>
+                    {isopen ? <input className={`search-block ${color}`} onChange={onChangeSearchInput} value={searchValue} placeholder='Search...' type="text" /> : prompt}
                 </div>
                 <div className={isopen ? null : "arrow" }/>
             </div>
-            <div className={`options ${isopen ? "open" : null }`}>
+            <div className={`options ${isopen ? "open" : null } ${color}`}>
                 {content.filter((obj) => obj.text.toLowerCase().includes(searchValue)).map((obj) => (
                     <Option
                         value = {value}
@@ -52,10 +55,11 @@ function Select ({content, prompt, value, setValue}) {
                         content={obj}
                         key = {obj.id}
                         onAddToValue= {onAddToValue}
-                        
+                        color = {color}
                     />
                 ))}
             </div>
+        </div>
         </div>
 
     )

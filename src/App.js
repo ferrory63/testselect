@@ -3,6 +3,9 @@ import Select from './Select'
 
 function App() {
   
+
+  const styles = ["large", "medium"]
+
   const array = [
     {id:1,text : 'Сергей', imageUrl : "/icons/photo.svg"},
     {id:2,text : 'Иван', imageUrl : ""},
@@ -13,7 +16,7 @@ function App() {
   
 
   return (
-    <div style={{width:200}}>
+    
     
     <Select 
       content={array} 
@@ -21,10 +24,12 @@ function App() {
       //onSelectClick={val => setValue((prev) => [...prev,val])} 
       value = {value}
       setValue = {(val) => setValue(val)}
+      color = {'dark'}
+      width = {300}
+    />
 
-      /> 
     
-    </div>
+   
   );
 }
 

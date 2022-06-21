@@ -1,7 +1,7 @@
 import React from "react";
 import './option.css'
 
-function Option ({content, onAddToValue})  {
+function Option ({content, onAddToValue, color})  {
     const [isAdded, setIsAdded] = React.useState(false);
 
     const add = (content) => {
@@ -19,7 +19,7 @@ function Option ({content, onAddToValue})  {
                         }}
                         
                         
-                        className={`option ${isAdded ? "added" : null}`}
+                        className={`option ${color} ${isAdded ? `added ` : null} `}
         >
                             <img width={15} height={15} src={content.imageUrl} alt=''/>
                             <p>{content.text}</p>
