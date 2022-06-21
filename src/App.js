@@ -18,9 +18,10 @@ function App() {
     <Select 
       content={array} 
       prompt={'Select smth'}
-      onSelectClick={val => setValue((prev) => [...prev,val])} 
+      //onSelectClick={val => setValue((prev) => [...prev,val])} 
       value = {value}
-      setValue = {setValue}
+      setValue = {(val) => setValue(val)}
+
       /> 
     
     </div>

@@ -24,6 +24,16 @@ function Select ({content, prompt, onSelectClick, value, setValue}) {
         setSearchValue(event.target.value);
    }
 
+   const onAddToValue = (content) =>{
+    if (value.find((item) => Number(content.id) === Number(item.id))) {
+                setValue((prev) => prev.filter(item => Number(content.id) !== Number(item.id)))
+                //setIsAdded(false)
+            } else {
+                //onSelectClick(content); 
+                setValue((prev) => [...prev,content])
+            }
+   }
+
     return (
         <div ref={ref} className="select" >
             <div  className="control" onClick={() => setIsOpen(true)}>
@@ -39,7 +49,9 @@ function Select ({content, prompt, onSelectClick, value, setValue}) {
                         setValue = {setValue}
                         content={obj}
                         key = {obj.id}
-                        onSelectClick= {onSelectClick}
+                        //onSelectClick= {onSelectClick}
+                        onAddToValue= {onAddToValue}
+                        
                     />
                 ))}
             </div>
