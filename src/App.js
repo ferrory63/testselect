@@ -4,9 +4,9 @@ import Select from './Select'
 function App() {
   
   const array = [
-    {id:1,text : '1', imageUrl : "/icons/photo.svg", added:false},
-    {id:2,text : '5', imageUrl : "asdsda", added:false},
-    {id:3,text : '3', imageUrl : "asdsda", added:false},
+    {id:1,text : 'Сергей', imageUrl : "/icons/photo.svg"},
+    {id:2,text : 'Иван', imageUrl : "asdsda"},
+    {id:3,text : 'Геннадий', imageUrl : "asdsda"},
    ];
   
   const [value, setValue] = React.useState([])

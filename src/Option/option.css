@@ -1,0 +1,17 @@
+.select .option {
+    box-sizing: border-box;
+    color: black;
+    cursor: pointer;
+    display: flex;
+    padding: 8px 10px;
+  }
+  .select .option.added {
+    background-color: #F2F9FC;
+  }
+  
+  
+  .select .option:hover {
+    background-color: #F2F4FC;
+    
+    
+  }

@@ -59,19 +59,4 @@
     display: block;
   }
   
-  .select .option {
-    box-sizing: border-box;
-    color: rgba(51, 51, 51, 0.8);
-    cursor: pointer;
-    display: block;
-    padding: 8px 10px;
-  }
-  .select .option.added {
-    background-color: aqua;
-  }
   
-  .select .option.selected,
-  .select .option:hover {
-    background-color: #f2f9fc;
-    color: #333;
-  }

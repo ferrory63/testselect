@@ -1,45 +1,44 @@
 import React from 'react';
+import Option from '../Option';
 import './select.css'
 
 function Select ({content, prompt, onSelectClick,}) {
    const [isopen, setIsOpen] = React.useState(false);
+   const [searchValue, setSearchValue] = React.useState("");
 
-   const [isAdded, setIsAdded] = React.useState(false);
+    const ref = React.useRef(null);
 
-   const [searchValue, setSearchValue] = React.useState("")
 
-   const onAddClick = () => {
-        setIsAdded(!isAdded);
-   }
+   React.useEffect(()=> {
+    let close = (event) => {
+        if (!ref.current.contains(event.target)) {
+        setIsOpen(false);}
+        }
+    document.addEventListener("click", close); 
+    return () => {
+        document.removeEventListener("click", close)
+    }
+    }, []); 
 
    const onChangeSearchInput = (event) => {
         setSearchValue(event.target.value);
    }
 
-
-   
     return (
-        <div className="select">
-            <div className="control" onClick={() => setIsOpen(true)}>
-                <div className="selected-value">
+        <div ref={ref} className="select" >
+            <div  className="control" onClick={() => setIsOpen(true)}>
+                <div  className="selected-value">
                     {isopen ? <input onChange={onChangeSearchInput} value={searchValue} placeholder='Search...' type="text" /> : prompt}
                 </div>
                 <div className={isopen ? null : "arrow" }/>
             </div>
             <div className={`options ${isopen ? "open" : null }`}>
                 {content.filter((obj) => obj.text.toLowerCase().includes(searchValue)).map((obj) => (
-                    <div 
-                        key={obj.id}
-                        onClick={() => {
-                            onSelectClick(obj); 
-                            onAddClick();
-                            
-                        }} 
-                        className={`option ${isAdded ? "added" : null}`}
-                    >
-                            <img width={10} height={10} src={obj.imageUrl} alt=''/>
-                            <p>{obj.text}</p>
-                    </div>
+                    <Option
+                        content={obj}
+                        key = {obj.id}
+                        onSelectClick= {onSelectClick}
+                    />
                 ))}
             </div>
         </div>
