@@ -15,3 +15,9 @@
     
     
   }
+  .select .option img {
+    margin-top: 20px;
+  }
+  .select .option p {
+    margin-left: 20px;
+  }

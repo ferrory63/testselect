@@ -18,12 +18,8 @@
     width: 0;
   }
   
-  .select .arrow.open {
-    border-color: transparent transparent #999;
-    border-width: 0 5px 5px;
-  }
   
-  .select .selected-value {
+  .select .search {
     line-height: 1.5;
     font-size: 1rem;
     background-color: #fff;
@@ -39,24 +35,29 @@
   
   .select .options {
     display: none;
-    background-color: #fff;
     border: 1px solid #ccc;
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
     box-sizing: border-box;
     margin-top: -1px;
     max-height: 200px;
-    overflow-y: auto;
     position: absolute;
     top: 100%;
     width: 100%;
     z-index: 1000;
-    -webkit-overflow-scrolling: touch;
+    
   }
 
 
   
   .select .options.open {
     display: block;
+  }
+
+
+  .select .control .search-block {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  height: 20px;
   }
   
   

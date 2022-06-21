@@ -2,7 +2,7 @@ import React from 'react';
 import Option from '../Option';
 import './select.css'
 
-function Select ({content, prompt, onSelectClick, value, setValue}) {
+function Select ({content, prompt, value, setValue}) {
    const [isopen, setIsOpen] = React.useState(false);
    const [searchValue, setSearchValue] = React.useState("");
 
@@ -12,7 +12,9 @@ function Select ({content, prompt, onSelectClick, value, setValue}) {
    React.useEffect(()=> {
     let close = (event) => {
         if (!ref.current.contains(event.target)) {
-        setIsOpen(false);}
+        setIsOpen(false)
+        //setSearchValue("");
+    }
         }
     document.addEventListener("click", close); 
     return () => {
@@ -27,9 +29,9 @@ function Select ({content, prompt, onSelectClick, value, setValue}) {
    const onAddToValue = (content) =>{
     if (value.find((item) => Number(content.id) === Number(item.id))) {
                 setValue((prev) => prev.filter(item => Number(content.id) !== Number(item.id)))
-                //setIsAdded(false)
+                
             } else {
-                //onSelectClick(content); 
+                
                 setValue((prev) => [...prev,content])
             }
    }
@@ -37,8 +39,8 @@ function Select ({content, prompt, onSelectClick, value, setValue}) {
     return (
         <div ref={ref} className="select" >
             <div  className="control" onClick={() => setIsOpen(true)}>
-                <div  className="selected-value">
-                    {isopen ? <input onChange={onChangeSearchInput} value={searchValue} placeholder='Search...' type="text" /> : prompt}
+                <div  className="search">
+                    {isopen ? <input className='search-block' onChange={onChangeSearchInput} value={searchValue} placeholder='Search...' type="text" /> : prompt}
                 </div>
                 <div className={isopen ? null : "arrow" }/>
             </div>
@@ -49,7 +51,6 @@ function Select ({content, prompt, onSelectClick, value, setValue}) {
                         setValue = {setValue}
                         content={obj}
                         key = {obj.id}
-                        //onSelectClick= {onSelectClick}
                         onAddToValue= {onAddToValue}
                         
                     />
@@ -59,11 +60,7 @@ function Select ({content, prompt, onSelectClick, value, setValue}) {
 
     )
     
-//   <select>
-//    {props.array.map((obj) => (
-//        <option> <img height={15} width={15} alt="asd" src='/icons/photo.svg'/></option>
-//    )) }
- //  </select>)
+
 }
 
 export default Select;

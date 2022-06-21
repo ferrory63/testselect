@@ -5,8 +5,8 @@ function App() {
   
   const array = [
     {id:1,text : 'Сергей', imageUrl : "/icons/photo.svg"},
-    {id:2,text : 'Иван', imageUrl : "asdsda"},
-    {id:3,text : 'Геннадий', imageUrl : "asdsda"},
+    {id:2,text : 'Иван', imageUrl : ""},
+    {id:3,text : 'Геннадий', imageUrl : ""},
    ];
   
   const [value, setValue] = React.useState([])
