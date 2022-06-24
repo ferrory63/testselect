@@ -1,29 +1,28 @@
-import React from "react";
+import React, { useState } from 'react'
 import './option.css'
 
-function Option ({content, onAddToValue, color})  {
-    const [isAdded, setIsAdded] = React.useState(false);
+function Option({ content, onAddToValue, color, multiselect }) {
+    const [isAdded, setIsAdded] = useState(false)
 
     const add = (content) => {
-        onAddToValue(content);
-        setIsAdded(!isAdded);
+        if (multiselect) {
+            onAddToValue(content)
+            setIsAdded(!isAdded)
+        } else if (!multiselect) {
+            onAddToValue(content)
+        }
     }
-    
 
     return (
-        <div 
-                        
-                        onClick={() => {
-                            add(content)
-                            
-                        }}
-                        
-                        
-                        className={`option ${color} ${isAdded ? `added ` : null} `}
+        <div
+            onClick={() => {
+                add(content)
+            }}
+            className={`option ${color} ${isAdded ? `added ` : null} `}
         >
-                            <img width={15} height={15} src={content.imageUrl} alt=''/>
-                            <p>{content.text}</p>
-                    </div>
+            <img width={15} height={15} src={content.imageUrl} alt="" />
+            <p>{content.text}</p>
+        </div>
     )
 }
 

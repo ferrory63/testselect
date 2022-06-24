@@ -4,6 +4,19 @@
   
   cursor: default;
 }
+
+.select .selected-value {
+  line-height: 1.5;
+  font-size: 1rem;
+  border: 1px solid;
+  border-radius: 2px;
+  box-sizing: border-box;
+  cursor: default;
+  outline: none;
+  padding: 8px 52px 8px 10px;
+  transition: all 200ms ease;
+  width: 100%;
+}
   
 .select .arrow {
   border-color: #999 transparent transparent;
@@ -70,6 +83,10 @@
   
 }
 
+.select .arrow.open {
+  border-color: transparent transparent #999;
+  border-width: 0 5px 5px;
+}
 
 
   
